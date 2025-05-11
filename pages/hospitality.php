@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $query);
                     ?>
                         <div class="col-md-4">
                             <div class="card shadow-sm border-0 overflow-hidden h-100">
-                                <img src="../public/upload/rooms/<?= $row['image'] ?>" class="card-img-top" style="height: 200px; object-fit: cover; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+                                <img src="../public/upload/rooms/<?php echo $row['image'] ?>" class="card-img-top" style="height: 200px; object-fit: cover; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
 
                                 <div class="card-body">
 
