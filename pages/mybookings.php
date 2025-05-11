@@ -72,7 +72,6 @@ $result = mysqli_query($conn, $query);
 
                                         <p><strong>Room is Booked <i class="fa-regular fa-circle-check text-success"></i></strong></p>
                                         <p><strong>Booked By : <?php echo ucfirst($username) ?> </strong></p>
-                                        <p><strong>Booking Id : <?php echo $row['id'] ?> </strong></p>
                                         <p><strong>Booked On: <?php echo $bookingdate ?></strong> </p>
 
                                     </div>
@@ -87,8 +86,13 @@ $result = mysqli_query($conn, $query);
                                         <div class="col-md-7">
                                             <div class="card-body text-dark">
 
-                                                <h4 class="card-title fw-bold"><?php echo $roomrow['title'] ?></h4>
-                                                <p class="text-muted"><?php echo $roomrow['shortdescription'] ?></p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h4 class="card-title fw-bold"><?php echo $roomrow['title'] ?></h4>
+                                                        <p class="text-muted"><?php echo $roomrow['shortdescription'] ?></p>
+                                                    </div>
+                                                    <p><strong>Booking Id : <?php echo $row['id'] ?> </strong></p>
+                                                </div>
 
                                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                                     <p><strong>Booked Price: ₹<?php echo $roomrow['price'] ?></strong></p>

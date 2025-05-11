@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $query);
                         <div class="card shadow-sm border-0 overflow-hidden h-100">
                             <div class="row g-0">
                                 <div class="col-md-6">
-                                    <img src="../public/upload/rooms/<?= $row['image'] ?>" class="img-fluid w-100 object-fit-cover" style="height: 440px;" alt="Room Image">
+                                    <img src="../public/upload/rooms/<?php echo $row['image'] ?>" class="img-fluid w-100 object-fit-cover" style="height: 440px;" alt="Room Image">
                                 </div>
 
                                 <div class="col-md-6">
@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $query);
 
                                         <div class="mb-3">
                                             <h5 class="fw-semibold">Key Benefits:</h5>
-                                            <p><?= $row['keybenefits'] ?></p>
+                                            <p><?php echo $row['keybenefits'] ?></p>
                                         </div>
 
                                         <div class="mb-3">
@@ -62,11 +62,11 @@ $result = mysqli_query($conn, $query);
 
                                         <div class="mb-3">
                                             <h5 class="fw-semibold">Long Description:</h5>
-                                            <p><?= $row['longdescription'] ?></p>
+                                            <p><?php echo $row['longdescription'] ?></p>
                                         </div>
 
                                         <div class="d-flex justify-content-between align-items-center mt-4">
-                                            <h4 class="text-success fw-bold mb-0">₹ <?= $row['price'] ?> / day</h4>
+                                            <h4 class="text-success fw-bold mb-0">₹ <?php echo $row['price'] ?> / day</h4>
                                             <button type="button" name="booknow" class="btn btn-success px-4 py-2"
                                                 data-type="roombook"
                                                 data-room-id="<?php echo $roomid ?>"

@@ -189,7 +189,7 @@ $(document).on('click', '[data-type="roombook"]', function (e) {
             'userId': userId,
             'roomPrice': roomPrice,
         },
-        url: 'http://localhost/phpProjects/realstate_website/pages/addtocart.php',
+        url: 'http://localhost/phpProjects/php-realstate-website/pages/addtocart.php',
         success: function (response) {
             if (response) {
                 $('#cartCount').text(response)
@@ -219,7 +219,7 @@ $(document).on('click', '[data-type="add"]', function (e) {
             'roomPrice': roomPrice,
         },
 
-        url: 'http://localhost/phpProjects/realstate_website/pages/addition.php',
+        url: 'http://localhost/phpProjects/php-realstate-website/pages/addition.php',
 
         success: function (response) {
             let data = JSON.parse(response);
@@ -249,7 +249,7 @@ $(document).on('click', '[data-type="sub"]', function (e) {
             'roomPrice': roomPrice,
         },
 
-        url: 'http://localhost/phpProjects/realstate_website/pages/subtraction.php',
+        url: 'http://localhost/phpProjects/php-realstate-website/pages/subtraction.php',
 
         success: function (response) {
 
@@ -271,7 +271,7 @@ $(document).on('click', '[data-type="payment"]', function (e) {
         data: {
             'userId': userId,
         },
-        url: 'http://localhost/phpProjects/realstate_website/pages/proceedtopay.php',
+        url: 'http://localhost/phpProjects/php-realstate-website/pages/proceedtopay.php',
         success: function (response) {
             if (response) {
                 $('#cartCount').text(response)
