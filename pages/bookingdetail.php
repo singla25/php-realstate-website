@@ -28,7 +28,7 @@ $date = $_GET['date'];
 
                         <?php
 
-                        $query = "SELECT * FROM `userbooking` WHERE `userid` = $userid AND `status` = 1 AND DATE(created_at) = '$date'";
+                        $query = "SELECT * FROM `bookinghistory` WHERE `userid` = $userid AND `status` = 1 AND `created_at` = '$date'";
                         $result = mysqli_query($conn, $query);
 
                         $totalprice = 0;
@@ -36,54 +36,61 @@ $date = $_GET['date'];
 
                         while ($row = mysqli_fetch_assoc($result)) {
 
+                            $bookingid = $row['id'];
                             $quantity = $row['quantity'];
-                            $roomid = $row['roomid'];
+                            $roomid = $row['room_id'];
 
-                            $roomquery = "SELECT * FROM `room` WHERE `id` = $roomid";
-                            $roomresult = mysqli_query($conn, $roomquery);
+                            $newquery = "SELECT * FROM `userbooking` WHERE `userid` = '$userid' AND `roomid` = '$roomid' AND `quantity` = '$quantity' AND `status` = 1";
+                            $newresult = mysqli_query($conn, $newquery);
 
-                            $totalRoomCount += $quantity;
+                            while ($newrow = mysqli_fetch_assoc($newresult)) {
 
-                            while ($roomrow = mysqli_fetch_assoc($roomresult)) {
-                                $subt = $quantity * $roomrow['price'];
-                                $totalprice += $subt;
+                                $roomquery = "SELECT * FROM `room` WHERE `id` = $roomid";
+                                $roomresult = mysqli_query($conn, $roomquery);
+
+                                $totalRoomCount += $quantity;
+
+                                while ($roomrow = mysqli_fetch_assoc($roomresult)) {
+                                    $subt = $quantity * $roomrow['price'];
+                                    $totalprice += $subt;
                         ?>
 
-                                <div class="card m-2">
-                                    <div class="row g-0">
-                                        <div class="col-md-5">
-                                            <img src="../public/upload/rooms/<?php echo $roomrow['image'] ?>" class="img-fluid w-100 object-fit-cover" style="height: 210px;" alt="Room Image">
-                                        </div>
+                                    <div class="card m-2">
+                                        <div class="row g-0">
+                                            <div class="col-md-5">
+                                                <img src="../public/upload/rooms/<?php echo $roomrow['image'] ?>" class="img-fluid w-100 object-fit-cover" style="height: 210px;" alt="Room Image">
+                                            </div>
 
-                                        <div class="col-md-7">
-                                            <div class="card-body text-dark">
+                                            <div class="col-md-7">
+                                                <div class="card-body text-dark">
 
 
-                                                <h4 class="card-title fw-bold"><?php echo $roomrow['title'] ?></h4>
-                                                <p class="text-muted"><?php echo $roomrow['shortdescription'] ?></p>
+                                                    <h4 class="card-title fw-bold"><?php echo $roomrow['title'] ?></h4>
+                                                    <p class="text-muted"><?php echo $roomrow['shortdescription'] ?></p>
 
-                                                <div class="my-2">
-                                                    <h6 class="mb-0">Key Benefits:</h6>
-                                                    <p class="text-muted mt-0"><?php echo $roomrow['keybenefits'] ?></p>
-                                                </div>
-
-                                                <div class="d-flex justify-content-between align-items-center mt-1">
                                                     <div class="my-2">
-                                                        <p><strong>Booked Price: ₹<?php echo $roomrow['price'] ?></strong></p>
-                                                        <p><strong>Booked Quantity: <?php echo $quantity ?></strong></p>
+                                                        <h6 class="mb-0">Key Benefits:</h6>
+                                                        <p class="text-muted mt-0"><?php echo $roomrow['keybenefits'] ?></p>
+                                                    </div>
 
+                                                    <div class="d-flex justify-content-between align-items-center mt-1">
+                                                        <div class="my-2">
+                                                            <p><strong>Booked Price: ₹<?php echo $roomrow['price'] ?></strong></p>
+                                                            <p><strong>Booked Quantity: <?php echo $quantity ?></strong></p>
+
+                                                        </div>
+                                                        <div class="my-2">
+                                                            <p><strong>Booking Id : <?php echo $bookingid ?> </strong></p>
+                                                            <p class="subtotal"><strong>Subtotal Money Spent: ₹<?php echo $subt ?></strong></p>
+                                                        </div>
+                                                        <a href="roomdetail.php?id=<?php echo $roomid ?>" class="btn btn-outline-success">Book Again</a>
                                                     </div>
-                                                    <div class="my-2">
-                                                        <p><strong>Booking Id : <?php echo $row['id'] ?> </strong></p>
-                                                        <p class="subtotal"><strong>Subtotal Money Spent: ₹<?php echo $subt ?></strong></p>
-                                                    </div>
-                                                    <a href="roomdetail.php?id=<?php echo $roomid ?>" class="btn btn-outline-success">Book Again</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                         <?php
+                                }
                             }
                         }
                         ?>
