@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 06, 2025 at 06:30 AM
+-- Generation Time: May 21, 2025 at 09:49 AM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -18,8 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `realstate_website`
+-- Database: `php-realstate-website`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookinghistory`
+--
+
+DROP TABLE IF EXISTS `bookinghistory`;
+CREATE TABLE IF NOT EXISTS `bookinghistory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  `room_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `userbookingid` int NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `bookinghistory`
+--
+
+INSERT INTO `bookinghistory` (`id`, `userid`, `room_id`, `quantity`, `userbookingid`, `status`, `created_at`) VALUES
+(1, 5, 2, 2, 1, 1, '2025-05-21 13:06:19'),
+(2, 5, 12, 2, 2, 1, '2025-05-21 13:06:19'),
+(3, 5, 14, 1, 3, 1, '2025-05-21 13:06:19'),
+(4, 5, 2, 1, 4, 1, '2025-05-21 13:08:57'),
+(5, 5, 1, 2, 5, 1, '2025-05-21 14:48:51'),
+(6, 5, 15, 2, 6, 1, '2025-05-21 14:48:51'),
+(7, 1, 3, 2, 7, 1, '2025-05-21 15:11:53'),
+(8, 1, 2, 2, 8, 1, '2025-05-21 15:11:53'),
+(9, 1, 12, 2, 9, 1, '2025-05-21 15:11:53'),
+(10, 1, 3, 3, 10, 1, '2025-05-21 15:13:31'),
+(11, 1, 14, 1, 11, 1, '2025-05-21 15:13:31'),
+(12, 1, 3, 1, 12, 1, '2025-05-21 15:17:51');
 
 -- --------------------------------------------------------
 
@@ -39,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `price` int NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `room`
@@ -59,7 +95,8 @@ INSERT INTO `room` (`id`, `title`, `amenities`, `image`, `shortdescription`, `lo
 (11, 'Room 11', 'wifi,powerbackup', 'room11.jpeg', 'Pg for boys/girls', 'Best for students, professionals, workers, helpers', 'Budget friendly', 250, '2025-04-16 17:57:25'),
 (12, 'Room 12', 'ac,wifi,tv,geyser', 'room12.avif', 'Affordable Room', 'Best for students, professionals, workers. These rooms are best and budget friendly', 'Budget friendly Room', 2100, '2025-04-17 06:16:31'),
 (13, 'Room 13', 'ac,wifi,tv,geyser,powerbackup,elevator', 'room13.avif', 'Delux Room', 'Best for professionals, business persons. These rooms are best and spacious', 'Luxury in your Pocket', 2500, '2025-04-17 06:18:18'),
-(14, 'Aggarwal PG', 'ac,wifi', 'room14', 'PG for Boys/Girls', 'Best for students, professionals, workers. These rooms are best and budget friendly', 'Food is included in rent', 300, '2025-04-23 11:30:12');
+(14, 'Aggarwal PG', 'ac,wifi', 'room14', 'PG for Boys/Girls', 'Best for students, professionals, workers. These rooms are best and budget friendly', 'Food is included in rent', 300, '2025-04-23 11:30:12'),
+(15, 'Room 15', 'ac,wifi,geyser,powerbackup', 'room15.jpeg', 'PG for Girls', 'fully furnished room, with attach washroom, washing machine', 'Food is included and electricity bill is also included', 400, '2025-05-06 06:48:55');
 
 -- --------------------------------------------------------
 
@@ -78,49 +115,25 @@ CREATE TABLE IF NOT EXISTS `userbooking` (
   `status` int NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `userbooking`
 --
 
 INSERT INTO `userbooking` (`id`, `userid`, `roomid`, `quantity`, `price`, `sub_total`, `status`, `created_at`) VALUES
-(1, 6, 1, 2, '500', '5500', 1, '2025-04-22 07:25:21'),
-(2, 6, 2, 3, '1000', '3000', 1, '2025-04-22 07:25:23'),
-(3, 6, 4, 6, '2300', '13800', 1, '2025-04-22 07:25:24'),
-(4, 6, 5, 5, '2200', '8800', 1, '2025-04-22 07:25:27'),
-(5, 6, 9, 8, '8000', '64000', 1, '2025-04-22 07:25:28'),
-(17, 6, 3, 2, '1500', '3000', 1, '2025-04-23 06:44:57'),
-(7, 3, 10, 3, '10000', '30000', 1, '2025-04-22 07:26:04'),
-(8, 3, 9, 2, '8000', '', 1, '2025-04-22 07:26:07'),
-(21, 2, 14, 2, '300', '', 0, '2025-04-23 11:31:00'),
-(10, 3, 4, 2, '2300', '', 1, '2025-04-22 07:26:13'),
-(11, 2, 1, 2, '500', '', 0, '2025-04-22 07:26:36'),
-(25, 2, 10, 1, '10000', '', 0, '2025-04-24 05:20:34'),
-(14, 1, 1, 2, '500', '', 1, '2025-04-22 07:26:56'),
-(15, 1, 2, 3, '1000', '3000', 1, '2025-04-22 07:26:57'),
-(16, 1, 3, 4, '1500', '', 1, '2025-04-22 07:26:58'),
-(18, 6, 12, 6, '2100', '12600', 1, '2025-04-23 07:21:23'),
-(20, 3, 3, 2, '1500', '3000', 1, '2025-04-23 11:14:52'),
-(22, 2, 3, 3, '1500', '6000', 0, '2025-04-23 11:40:31'),
-(24, 2, 8, 3, '300', '', 0, '2025-04-24 05:18:46'),
-(26, 2, 6, 6, '1800', '', 0, '2025-04-24 05:26:18'),
-(32, 6, 3, 2, '1500', '3000', 1, '2025-04-24 06:45:55'),
-(31, 2, 8, 1, '300', '', 0, '2025-04-24 06:31:25'),
-(30, 2, 3, 3, '1500', '', 0, '2025-04-24 06:28:29'),
-(34, 6, 1, 2, '500', '', 1, '2025-04-24 07:05:22'),
-(33, 6, 2, 3, '1000', '3000', 1, '2025-04-24 07:05:02'),
-(35, 6, 2, 3, '1000', '3000', 1, '2025-04-24 07:30:00'),
-(37, 6, 4, 1, '2300', '2300', 1, '2025-04-24 07:32:46'),
-(38, 6, 14, 2, '300', '600', 1, '2025-04-24 07:34:35'),
-(39, 6, 5, 1, '2200', '2200', 1, '2025-04-28 18:29:35'),
-(40, 6, 14, 2, '300', '600', 1, '2025-04-30 05:24:49'),
-(41, 6, 7, 4, '200', '800', 1, '2025-04-30 05:24:57'),
-(42, 3, 2, 3, '1000', '3000', 1, '2025-04-30 06:41:04'),
-(43, 1, 2, 3, '1000', '3000', 1, '2025-04-30 09:14:01'),
-(44, 1, 12, 2, '2100', '4200', 1, '2025-04-30 09:14:11'),
-(46, 3, 10, 3, '10000', '30000', 1, '2025-05-02 07:51:13'),
-(47, 6, 1, 1, '500', '500', 0, '2025-05-02 17:52:09');
+(1, 5, 2, 2, '1000', '2000', 1, '2025-05-21 07:31:19'),
+(2, 5, 12, 2, '2100', '4200', 1, '2025-05-21 07:31:23'),
+(3, 5, 14, 1, '300', '300', 1, '2025-05-21 07:31:29'),
+(4, 5, 2, 1, '1000', '1000', 1, '2025-05-21 07:38:53'),
+(5, 5, 1, 2, '500', '1000', 1, '2025-05-21 09:18:44'),
+(6, 5, 15, 2, '400', '800', 1, '2025-05-21 09:18:48'),
+(7, 1, 3, 3, '1500', '4500', 1, '2025-05-21 09:41:40'),
+(8, 1, 2, 2, '1000', '2000', 1, '2025-05-21 09:41:44'),
+(9, 1, 12, 2, '2100', '4200', 1, '2025-05-21 09:41:50'),
+(10, 1, 3, 3, '1500', '4500', 1, '2025-05-21 09:43:11'),
+(11, 1, 14, 1, '300', '300', 1, '2025-05-21 09:43:26'),
+(12, 1, 3, 1, '1500', '1500', 1, '2025-05-21 09:44:06');
 
 -- --------------------------------------------------------
 
@@ -139,24 +152,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(200) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `role`, `status`, `name`, `email`, `password`, `address`, `created_at`) VALUES
-(1, 0, 1, 'test', 'test@test', 'test', 'qwerty', '2025-03-20 16:16:09'),
-(2, 0, 2, 'raju', 'raju@raju', 'raju', 'qwerty', '2025-03-20 16:16:35'),
-(3, 0, 1, 'rahul', 'rahul@rahul', 'rahul', 'qwerty', '2025-03-20 16:16:58'),
-(4, 0, 1, 'raghav', 'raghav@raghav', 'raghav', 'qwerty', '2025-03-20 16:17:24'),
-(5, 0, 1, 'harry', 'harry@harry', 'harry', 'qwerty', '2025-03-20 16:17:49'),
-(6, 0, 2, 'sahil', 'sahil@sahil', 'sahil', 'qwerty', '2025-03-20 16:18:46'),
-(7, 0, 1, 'maanik', 'maanik@maanik', 'maanik', 'qwerty', '2025-03-20 16:19:08'),
-(8, 0, 1, 'uday', 'uday@uday', 'uday', 'qwerty', '2025-03-20 16:19:37'),
-(9, 0, 1, 'Yogesh', 'yogesh@yogesh', 'yogesh', 'qwerty', '2025-04-16 23:35:03'),
-(10, 0, 1, 'Rohit', 'rohit@rohit', 'rohit', 'qwerty', '2025-04-17 11:49:52'),
-(11, 0, 1, 'sdsdf', 'Testf@test', '123456', 'fefgrg', '2025-04-17 11:51:37');
+(1, 0, 2, 'sahil', 'sahil@sahil', 'sahil', 'BH-2, Panjab University, Sector 14 - 160014, Chandigarh', '2025-05-21 12:54:37'),
+(2, 0, 2, 'raju', 'raju@raju', 'raju', 'qwerty', '2025-05-21 12:59:34'),
+(3, 0, 1, 'rahul', 'rahul@rahul', 'rahul', 'qwerty', '2025-05-21 13:00:10'),
+(4, 0, 1, 'raghav', 'raghav@raghav', 'raghav', 'qwerty', '2025-05-21 13:00:31'),
+(5, 0, 1, 'harry', 'harry@harry', 'harry', 'qwerty', '2025-05-21 13:00:49');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
