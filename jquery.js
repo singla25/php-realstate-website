@@ -223,7 +223,7 @@ $(document).on('click', '[data-type="add"]', function (e) {
 
         success: function (response) {
             let data = JSON.parse(response);
-            quantityDiv.text('Quantity : '+ data.quantity);
+            quantityDiv.text('Quantity : ' + data.quantity);
             subtotalDiv.text('Sub Total Price : ₹ ' + data.subtotal);
         }
     })
@@ -256,7 +256,7 @@ $(document).on('click', '[data-type="sub"]', function (e) {
             let data = JSON.parse(response);
             quantityDiv.text('Quantity : ' + data.quantity);
             subtotalDiv.text('Sub Total Price : ₹ ' + data.subtotal);
-            
+
         }
     })
 })
@@ -265,17 +265,22 @@ $(document).on('click', '[data-type="payment"]', function (e) {
     e.preventDefault();
 
     let userId = $(this).data('user-id');
-    
+
     $.ajax({
         type: 'post',
-        data: {
-            'userId': userId,
-        },
         url: 'http://localhost/phpProjects/php-realstate-website/pages/proceedtopay.php',
+        data: { 'userId': userId },
         success: function (response) {
-            if (response) {
-                $('#cartCount').text(response)
-            }
-        }
+            $('#paymentMessage').text(response).fadeIn();
+            $('#payNowBtn').prop('disabled', true).text('Room Booked');
+            
+            setTimeout(() => {
+                $('#paymentMessage').fadeOut();
+            }, 5000);
+
+            // Optional: reload or redirect after booking
+            // location.reload();
+            window.location.href = 'mybookings.php';
+        },
     })
 })

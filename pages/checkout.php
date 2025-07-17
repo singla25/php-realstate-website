@@ -91,6 +91,7 @@ $userOrderCount = mysqli_num_rows($result);
                                 Proceed to Pay
                             </button>
                         <?php } ?>
+                        <div id="paymentMessage" class="alert alert-success mt-3" style="display: none;"></div>
                     </div>
                 </div>
             </div>
