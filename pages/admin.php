@@ -29,7 +29,7 @@ if (isset($_POST) && $_POST) {
     $longdescription = $_POST['longdescription'];
     $keybenefits = $_POST['keybenefits'];
     $roomprice = $_POST['roomprice'];
-    $amenities = implode(',', $_POST['amenities']);
+    $amenities = isset($_POST['amenities']) ? implode(',', $_POST['amenities']) : '';
     // implode function is used to convert array into string
 
     if ($roomtitle && $roomimage && $shortdescription && $roomprice) {
