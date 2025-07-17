@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 17, 2025 at 06:50 AM
+-- Generation Time: Jul 17, 2025 at 07:14 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `bookinghistory` (
   `status` tinyint(1) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `bookinghistory`
@@ -51,7 +51,11 @@ INSERT INTO `bookinghistory` (`id`, `userid`, `room_id`, `quantity`, `userbookin
 (5, 3, 2, 1, 5, 1, '2025-07-17 11:52:28'),
 (6, 1, 2, 1, 6, 1, '2025-07-17 11:57:41'),
 (7, 1, 1, 2, 7, 1, '2025-07-17 12:05:17'),
-(8, 1, 3, 1, 8, 1, '2025-07-17 12:05:17');
+(8, 1, 3, 1, 8, 1, '2025-07-17 12:05:17'),
+(9, 1, 12, 2, 9, 1, '2025-07-17 12:42:29'),
+(10, 1, 8, 1, 10, 1, '2025-07-17 12:42:29'),
+(11, 1, 7, 1, 11, 1, '2025-07-17 12:42:29'),
+(12, 1, 11, 2, 12, 1, '2025-07-17 12:42:29');
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `userbooking` (
   `sub_total` int NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `userbooking`
@@ -122,7 +126,11 @@ INSERT INTO `userbooking` (`id`, `userid`, `roomid`, `quantity`, `price`, `statu
 (5, 3, 2, 1, 600, 1, 600, '0000-00-00 00:00:00'),
 (6, 1, 2, 1, 600, 1, 600, '0000-00-00 00:00:00'),
 (7, 1, 1, 2, 400, 1, 800, '0000-00-00 00:00:00'),
-(8, 1, 3, 1, 500, 1, 500, '0000-00-00 00:00:00');
+(8, 1, 3, 1, 500, 1, 500, '0000-00-00 00:00:00'),
+(9, 1, 12, 2, 2500, 1, 5000, '0000-00-00 00:00:00'),
+(10, 1, 8, 1, 1100, 1, 1100, '0000-00-00 00:00:00'),
+(11, 1, 7, 1, 1000, 1, 1000, '0000-00-00 00:00:00'),
+(12, 1, 11, 2, 2000, 1, 4000, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
