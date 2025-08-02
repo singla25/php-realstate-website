@@ -34,7 +34,7 @@ This project is a real estate listing platform where users can browse properties
 * **Backend:** PHP (Core PHP, Procedural PHP)
 * **Database:** MySQL
 * **Version Control:** Git, GitHub
-* **Development Environment:** XAMPP (Apache & MySQL Server)
+* **Development Environment:** XAMPP/WAMP (Apache & MySQL Server)
 * **Database Management:** phpMyAdmin
 
 ---
@@ -48,7 +48,7 @@ This project is a real estate listing platform where users can browse properties
    ```
 2. **Setup Localhost:**
 
-   * Use **XAMPP** or **LAMP** to run a local Apache and MySQL server.
+   * Use **XAMPP**, **WAMO** or **LAMP** to run a local Apache and MySQL server.
 3. **Database Configuration:**
 
    * Create a new database, e.g., `realestate_db` in **phpMyAdmin**.
